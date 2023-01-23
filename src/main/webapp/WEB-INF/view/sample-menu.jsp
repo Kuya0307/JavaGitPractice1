@@ -7,8 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<p>成功しました。</p>
-	<a href = "LoginFormServlet">次へ</a>
-
+	<h3>トップメニュー</h3>
+	<a href = "#">登録</a>
+	<a href = "#">削除</a>
 </body>
 </html>

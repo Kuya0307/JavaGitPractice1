@@ -30,7 +30,7 @@ public class AccountDAO {
 	}
 	
 	public static int registerAccount(Account account) {
-		String sql = "INSERT INTO login VALUES(default, ?, ?, ?, ?, current_timestamp)";
+		String sql = "INSERT INTO login VALUES(default, ?, ?, ?, ?)";
 		int result = 0;
 		
 		// ランダムなソルトの取得(今回は32桁で実装)
@@ -89,7 +89,7 @@ public class AccountDAO {
 	
 	// ログイン処理
 	public static Account login(String mail, String hashedPw) {
-		String sql = "SELECT * FROM login WHERE mail = ? AND password = ?";
+		String sql = "SELECT * FROM login WHERE mail = ? AND pw = ?";
 		
 		try (
 				Connection con = getConnection();
@@ -104,7 +104,6 @@ public class AccountDAO {
 					int id = rs.getInt("id");
 					String name = rs.getString("name");
 					String salt = rs.getString("salt");
-					String createdAt = rs.getString("created_at");
 					
 					return new Account(id, name, mail, salt, null, null);
 				}
