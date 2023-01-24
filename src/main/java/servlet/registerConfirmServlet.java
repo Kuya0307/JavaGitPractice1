@@ -50,7 +50,7 @@ request.setCharacterEncoding("UTF-8");
 	int result = registerdao.registerbook(book);
 		
 		if(result == 1) {
-			String view = "WEB-INF/view/success.jsp";
+			String view = "WEB-INF/view/success3.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 			dispatcher.forward(request, response);
 	}else {
