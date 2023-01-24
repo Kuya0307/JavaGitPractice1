@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>図書削除</title>
 </head>
 <body>
 	<form action="DeleteActionServlet" method="post">
