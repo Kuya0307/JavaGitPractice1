@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>削除完了</title>
 </head>
 <body>
 	<h1>削除完了しました！！</h1>
