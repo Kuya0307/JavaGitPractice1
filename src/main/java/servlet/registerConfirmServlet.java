@@ -8,22 +8,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import dao.registerdao;
-import dto.registerdto;
+import dto.Account;
 
 /**
- * Servlet implementation class registerConfirmServlet
+ * Servlet implementation class RegisterConfirmServlet
  */
-@WebServlet("/registerConfirmServlet")
-public class registerConfirmServlet extends HttpServlet {
+@WebServlet("/RegisterConfirmServlet")
+public class RegisterConfirmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private Object registerdto;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public registerConfirmServlet() {
+    public RegisterConfirmServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,33 +31,25 @@ public class registerConfirmServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-request.setCharacterEncoding("UTF-8");
-		Login login= (Login)session.getAttribute("input_data");
+		request.setCharacterEncoding("UTF-8");
 		
 		String name = request.getParameter("name");
-		String writer = request.getParameter("writer");
-		String pub = request.getParameter("pub");
-		String isbnTenp = request.getParameter("isbn");
-		String login_idTenp = request.getParameter("login_id");
+		String mail = request.getParameter("email");
+		String pw = request.getParameter("pw");
 		
-		
-		int isbn = Integer.parseInt(isbnTenp);
-		int id = login.getId();
-		registerdto book = new registerdto(name, writer, pub, isbn, id);
+		Account account = new Account(-1, name, mail, null, pw, null);
 		
 		// セッションスコープのインスタンス取得
-	int result = registerdao.registerbook(book);
+		HttpSession session = request.getSession();
 		
-		if(result == 1) {
-			String view = "WEB-INF/view/success3.jsp";
-			RequestDispatcher dispatcher = request.getRequestDispatcher(view);
-			dispatcher.forward(request, response);
-	}else {
-		String view = "WEB-INF/view/success1.jsp";
+		// セッションスコープに値の保存
+		// 第1引数：キー
+		// 第2引数：保存する値
+		session.setAttribute("input_data", account);
+		
+		String view = "WEB-INF/view/sample-confirm.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
-		dispatcher.forward(request, response);
-	}
-	}
+		dispatcher.forward(request, response);	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
