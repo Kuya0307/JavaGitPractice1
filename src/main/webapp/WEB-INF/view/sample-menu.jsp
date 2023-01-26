@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h3>トップメニュー</h3>
-	<a href = "#">登録</a>
-	<a href = "#">削除</a>
+	<a href = "registerservlet">登録</a>
+	<a href = "Deleteservlet">削除</a>
 </body>
 </html>
