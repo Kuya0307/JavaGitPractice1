@@ -31,7 +31,9 @@ public class RegisterConfirmServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//add
 		request.setCharacterEncoding("UTF-8");
+		
 		
 		String name = request.getParameter("name");
 		String mail = request.getParameter("email");
